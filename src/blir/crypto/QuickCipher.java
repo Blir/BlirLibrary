@@ -38,6 +38,13 @@ public class QuickCipher {
      * The algorithm used for encryption and decryption for this QuickCipher.
      */
     private String algorithm;
+    
+    /**
+     * The supported decryption algorithms.
+     */
+    public static enum Algorithm {
+        DES, DESede
+    }
 
     /**
      * Constructs a new QuickChipher with the given transformation and
@@ -92,29 +99,47 @@ public class QuickCipher {
             System.out.println("Initializing encryption...");
         }
         cipher.init(Cipher.ENCRYPT_MODE, key);
-        try (FileInputStream fis = new FileInputStream(input)) {
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(input);
             data = new byte[(int) input.length()];
             if (debug) {
                 System.out.println("Reading data...");
             }
             fis.read(data);
+        } finally {
+            if (fis != null) {
+                fis.close();
+            }
         }
         if (debug) {
             System.out.println("Encrypting data...");
         }
         data = cipher.doFinal(data);
-        try (FileOutputStream fos = new FileOutputStream(output)) {
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(output);
             if (debug) {
                 System.out.println("Saving data...");
             }
             fos.write(data);
+        } finally {
+            if (fos != null) {
+                fos.close();
+            }
         }
         if (debug) {
             System.out.println("Saving key...");
         }
         data = key.getEncoded();
-        try (FileOutputStream fos = new FileOutputStream(keyFile)) {
+        fos = null;
+        try {
+            fos = new FileOutputStream(keyFile);
             fos.write(data);
+        } finally {
+            if (fos != null) {
+                fos.close();
+            }
         }
         if (debug) {
             System.out.println("Encryption complete!");
@@ -158,15 +183,21 @@ public class QuickCipher {
         if (debug) {
             System.out.println("Loading key...");
         }
-        try (FileInputStream fis = new FileInputStream(keyFile)) {
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(keyFile);
             data = new byte[fis.available()];
             fis.read(data);
+        } finally {
+            if (fis != null) {
+                fis.close();
+            }
         }
-        switch (algorithm) {
-            case "DES":
+        switch (Algorithm.valueOf(algorithm)) {
+            case DES:
                 key = SecretKeyFactory.getInstance(algorithm).generateSecret(new DESKeySpec(data));
                 break;
-            case "DESede":
+            case DESede:
                 key = SecretKeyFactory.getInstance(algorithm).generateSecret(new DESedeKeySpec(data));
                 break;
             default:
@@ -180,9 +211,15 @@ public class QuickCipher {
         if (debug) {
             System.out.println("Reading data...");
         }
-        try (FileInputStream fis = new FileInputStream(input)) {
+        fis = null;
+        try {
+            fis = new FileInputStream(input);
             data = new byte[(int) input.length()];
             fis.read(data);
+        } finally {
+            if (fis != null) {
+                fis.close();
+            }
         }
         if (debug) {
             System.out.println("Decrypting data...");
@@ -191,8 +228,14 @@ public class QuickCipher {
         if (debug) {
             System.out.println("Saving data...");
         }
-        try (FileOutputStream fos = new FileOutputStream(output)) {
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(output);
             fos.write(data);
+        } finally {
+            if (fos != null) {
+                fos.close();
+            }
         }
         if (debug) {
             System.out.println("Decryption complete!");

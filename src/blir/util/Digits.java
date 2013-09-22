@@ -98,7 +98,7 @@ public class Digits {
                 }
                 break;
             case GREATEST_TO_LEAST:
-                ArrayList<Integer> used = new ArrayList<>();
+                ArrayList<Integer> used = new ArrayList<Integer>();
                 for (int idx = 0; idx < digits.length; idx++) {
                     int dig = -1;
                     value[idx] = 0;
@@ -112,7 +112,7 @@ public class Digits {
                 }
                 break;
             case LEAST_TO_GREATEST:
-                used = new ArrayList<>();
+                used = new ArrayList<Integer>();
                 for (int idx = 0; idx < digits.length; idx++) {
                     int dig = -1;
                     value[idx] = 9;

@@ -24,9 +24,9 @@ public class CWindow {
     public final static Rectangle TTB_OUTPUT_POS = new Rectangle(5, 75, 415, 30);
     private JFrame frame;
     private Orientation orientation;
-    private ArrayList<JButton> buttons = new ArrayList<>(0);
-    private ArrayList<JLabel> labels = new ArrayList<>(0);
-    private ArrayList<TextLabelPair> buttonLabelPairs = new ArrayList<>(0);
+    private ArrayList<JButton> buttons = new ArrayList<JButton>(0);
+    private ArrayList<JLabel> labels = new ArrayList<JLabel>(0);
+    private ArrayList<TextLabelPair> buttonLabelPairs = new ArrayList<TextLabelPair>(0);
     private JTextArea output;
     private JLabel outputLbl;
     private JButton bugfix = new JButton();
