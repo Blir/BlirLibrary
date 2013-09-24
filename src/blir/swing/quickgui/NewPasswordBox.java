@@ -13,11 +13,12 @@ public class NewPasswordBox extends javax.swing.JFrame {
     /**
      * Creates new form NewPasswordBox
      */
-    public NewPasswordBox(String title, String content, NewPasswordListener listener) {
+    public NewPasswordBox(String title, String content, NewPasswordListener listener, boolean isEssential) {
         super(title);
         this.listener = listener;
         initComponents();
         jLabel1.setText(content);
+        setDefaultCloseOperation(isEssential ? EXIT_ON_CLOSE : DISPOSE_ON_CLOSE);
     }
 
     /**

@@ -26,7 +26,7 @@ public class InputBox extends javax.swing.JFrame {
         initComponents();
         jTextArea1.setText(query);
         jTextField1.setText(init);
-        setDefaultCloseOperation(isEssential ? javax.swing.WindowConstants.EXIT_ON_CLOSE : javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(isEssential ? EXIT_ON_CLOSE : DISPOSE_ON_CLOSE);
         this.listener = listener;
         setLocationRelativeTo(null);
         jTextField1.grabFocus();

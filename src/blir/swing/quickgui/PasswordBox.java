@@ -14,12 +14,13 @@ public class PasswordBox extends javax.swing.JFrame {
     /**
      * Creates new form PasswordBox
      */
-    public PasswordBox(String title, String content, InputListener listener) {
+    public PasswordBox(String title, String content, InputListener listener, boolean isEssential) {
         super(title);
         this.listener = listener;
         initComponents();
         jButton2.setEnabled(listener instanceof PasswordListener);
         jLabel1.setText(content);
+        setDefaultCloseOperation(isEssential ? EXIT_ON_CLOSE : DISPOSE_ON_CLOSE);
     }
 
     /**

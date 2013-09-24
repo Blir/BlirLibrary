@@ -22,7 +22,7 @@ public class MsgBox extends javax.swing.JFrame {
         super(title);
         initComponents();
         jTextArea1.setText(content);
-        setDefaultCloseOperation(isEssential ? javax.swing.WindowConstants.EXIT_ON_CLOSE : javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(isEssential ? EXIT_ON_CLOSE : DISPOSE_ON_CLOSE);
         this.task = task;
         setLocationRelativeTo(null);
     }
