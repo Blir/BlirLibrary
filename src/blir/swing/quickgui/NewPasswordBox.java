@@ -18,6 +18,7 @@ public class NewPasswordBox extends javax.swing.JFrame {
         this.listener = listener;
         initComponents();
         jLabel1.setText(content);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(isEssential ? EXIT_ON_CLOSE : DISPOSE_ON_CLOSE);
     }
 
