@@ -12,7 +12,7 @@ import java.util.logging.LogRecord;
  *
  * @author Blir
  */
-public class CompactFormatter extends Formatter {
+public class QuickFormatter extends Formatter {
 
     /*
      * Used to format the time at which the LogRecord was produced.
@@ -24,9 +24,9 @@ public class CompactFormatter extends Formatter {
     private final String LINE_SEPARATOR;
 
     /*
-     * Creates a new CompactFormatter.
+     * Creates a new QuickFormatter.
      */
-    public CompactFormatter(String format) {
+    public QuickFormatter(String format) {
         this.FORMAT = new SimpleDateFormat(format);
         this.LINE_SEPARATOR = System.getProperty("line.separator");
     }
